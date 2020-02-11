@@ -1,53 +1,74 @@
-# Udagram Image Filtering Microservice
+# Udacity Course 3 - and now is the project
 
-Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
+The github link to this project is: https://github.com/rpuggian/udacity-cd-course-3
 
-The project is split into three parts:
-1. [The Simple Frontend](/udacity-c3-frontend)
-A basic Ionic client web application which consumes the RestAPI Backend. 
-2. [The RestAPI Feed Backend](/udacity-c3-restapi-feed), a Node-Express feed microservice.
-3. [The RestAPI User Backend](/udacity-c3-restapi-user), a Node-Express user microservice.
+The **docker images** are available on, 
+- frontend: https://hub.docker.com/r/rpugg/udacity-frontend
+- backend-user-api: https://hub.docker.com/r/rpugg/udacity-restapi-user
+- backend-feed-api: https://hub.docker.com/r/rpugg/udacity-restapi-feed
+- reverse-proxy: https://hub.docker.com/r/rpugg/reverseproxy
 
-## Getting Setup
+## How to run this project? 
 
-> _tip_: this frontend is designed to work with the RestAPI backends). It is recommended you stand up the backend first, test using Postman, and then the frontend should integrate.
+#### Docker compose
 
-### Installing Node and NPM
-This project depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (NPM is included) from [https://nodejs.com/en/download](https://nodejs.org/en/download/).
+**To start** the containers, just go to deployment/docker folder and run the following command: `docker-compose -f docker-compose-build.yaml -f docker-compose.yaml up` 
 
-### Installing Ionic Cli
-The Ionic Command Line Interface is required to serve and build the frontend. Instructions for installing the CLI can be found in the [Ionic Framework Docs](https://ionicframework.com/docs/installation/cli).
+**To stop**, use `docker-compose -f docker-compose-build.yaml -f docker-compose.yaml down` 
 
-### Installing project dependencies
+When it's running, you should have access the following endpoints, 
+- localhost:8100, when frontend is exposed
+- localhost:8080, when the rest-apis is exposed by the reverse proxy
 
-This project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the root of this repository. After cloning, open your terminal and run:
-```bash
-npm install
-```
->_tip_: **npm i** is shorthand for **npm install**
+Then try to access on `localhost:8100`. See more on the section _About the App_ how the app looks like.
 
-### Setup Backend Node Environment
-You'll need to create a new node server. Open a new terminal within the project directory and run:
-1. Initialize a new project: `npm init`
-2. Install express: `npm i express --save`
-3. Install typescript dependencies: `npm i ts-node-dev tslint typescript  @types/bluebird @types/express @types/node --save-dev`
-4. Look at the `package.json` file from the RestAPI repo and copy the `scripts` block into the auto-generated `package.json` in this project. This will allow you to use shorthand commands like `npm run dev`
+#### Kubernetes version 1.17.0
 
+First if you want to run on kubernetes locally, make sure you alread has the minikube installed with the latest version. 
 
-### Configure The Backend Endpoint
-Ionic uses enviornment files located in `./src/enviornments/enviornment.*.ts` to load configuration variables at runtime. By default `environment.ts` is used for development and `enviornment.prod.ts` is used for produciton. The `apiHost` variable should be set to your server url either locally or in the cloud.
+Using minikube or on AWS, navigate to deployment/k8s folder and you should do the following steps:
 
-***
-### Running the Development Server
-Ionic CLI provides an easy to use development server to run and autoreload the frontend. This allows you to make quick changes and see them in real time in your browser. To run the development server, open terminal and run:
+1. Add secrets and config-maps
+    + In this repo we not publishing the secrets and config-maps, just because the keys. Instead you should put those keys which are available on the folder deployment/k8s/config-secrets-example
+    + Also, for add secrets and config-maps, you should run this command `kubeclt apply -f env-configmap.yaml -f env-secret.yaml -f aws-secret.yml`
+2. Create the services, using `kubectl apply -f backend-user-service.yaml -f backend-feed-service.yaml -f frontend-service.yaml -f reverseproxy-service.yaml`
+3. Create the deployments, using `kubectl apply -f backend-user-deployment.yaml -f backend-feed-deployment.yaml -f frontend-deployment.yaml -f reverseproxy-deployment.yaml`
 
-```bash
-ionic serve
-```
+When everything is setted, u could run `kubectl get pods` for example, and u will see something like this:
 
-### Building the Static Frontend Files
-Ionic CLI can build the frontend into static HTML/CSS/JavaScript files. These files can be uploaded to a host to be consumed by users on the web. Build artifacts are located in `./www`. To build from source, open terminal and run:
-```bash
-ionic build
-```
-***
+![getpods](https://user-images.githubusercontent.com/45040629/74201421-81f69a80-4c48-11ea-9457-67741c60b75f.png)
+
+Another feature, u can add is the kubernetes-dashboard, for enabling this u could see the full state of your kubernetes cluster. 
+
+To install, see more details here: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+![kubernetes-cluster-running](https://user-images.githubusercontent.com/45040629/74201502-c1bd8200-4c48-11ea-8f51-99bfe0865915.png)
+
+##### Okay, I have installed and setup the cluster, how to really use? 
+
+For this, first u need to set two port-forwards, to access today.
+1. On one terminal run, `kubectl port-forward service/frontend 8100:8100`
+1. In another terminal run, `kubectl port-forward service/reverseproxy 8080:8080`
+
+Then try to access on `localhost:8100`. See more on the section _About the App_ how the app looks like.
+
+### CI/CD (travis-ci)
+
+This project uses travis CI, to enable CI/CD. Here is an image of how looks like:
+
+![pr-ci](https://user-images.githubusercontent.com/45040629/74201666-211b9200-4c49-11ea-9a85-7176deb25cd6.png)
+
+![cicd](https://user-images.githubusercontent.com/45040629/74201614-047f5a00-4c49-11ea-95e8-98de24afda2c.png)
+
+## About the app
+
+It's an feed app. You can post some images with captions also fully authenticated. 
+
+For this running on cloud, we use s3 buckets and a containerized environment with kubernetes on AWS, created using kubeone + terraform. 
+About that, u can look here for more details: https://github.com/kubermatic/kubeone/blob/master/docs/quickstart-aws.md
+
+### How the app looks like? 
+
+![app-running](https://user-images.githubusercontent.com/45040629/74201825-8a030a00-4c49-11ea-9a6b-54b5e7b1f608.gif)
+
+![static-app-running](https://user-images.githubusercontent.com/45040629/74201860-a1da8e00-4c49-11ea-867b-6545d781f8bd.png)
