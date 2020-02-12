@@ -38,12 +38,6 @@ When everything is setted, u could run `kubectl get pods` for example, and u wil
 
 ![getpods](https://user-images.githubusercontent.com/45040629/74201421-81f69a80-4c48-11ea-9457-67741c60b75f.png)
 
-Another feature, u can add is the kubernetes-dashboard, for enabling this u could see the full state of your kubernetes cluster. 
-
-To install, see more details here: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-
-![kubernetes-cluster-running](https://user-images.githubusercontent.com/45040629/74201502-c1bd8200-4c48-11ea-8f51-99bfe0865915.png)
-
 ##### Okay, I have installed and setup the cluster, how to really use? 
 
 For this, first u need to set two port-forwards, to access today.
