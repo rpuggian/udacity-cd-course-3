@@ -35,7 +35,7 @@ Using minikube or on AWS, navigate to deployment/k8s folder and you should do th
 3. Create the deployments, using `kubectl apply -f backend-user-deployment.yaml -f backend-feed-deployment.yaml -f frontend-deployment.yaml -f reverseproxy-deployment.yaml`
 
 When everything is setted, u could run `kubectl get pods` for example, and u will see something like this:
-
+![pods](https://github.com/rpuggian/udacity-cd-course-3/blob/develop/prints/get_pod.png)
 
 ##### Okay, I have installed and setup the cluster, how to really use? 
 
