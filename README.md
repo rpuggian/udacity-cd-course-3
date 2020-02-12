@@ -64,6 +64,4 @@ About that, u can look here for more details: https://github.com/kubermatic/kube
 
 ### How the app looks like? 
 
-![app-running](https://user-images.githubusercontent.com/45040629/74201825-8a030a00-4c49-11ea-9a6b-54b5e7b1f608.gif)
-
-![static-app-running](https://user-images.githubusercontent.com/45040629/74201860-a1da8e00-4c49-11ea-867b-6545d781f8bd.png)
+![apptest](https://github.com/rpuggian/udacity-cd-course-3/blob/develop/prints/teste.gif)
