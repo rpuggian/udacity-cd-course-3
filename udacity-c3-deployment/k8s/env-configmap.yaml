@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  AWS_BUCKET: udagram-puggian-dev
-  AWS_PROFILE: udagram
-  AWS_REGION: us-east2-2
-  JWT_SECRET: ___INSERT_JWT_SECRET___
+  AWS_BUCKET: udagram-final
+  AWS_PROFILE: default
+  AWS_REGION: us-east-2
+  JWT_SECRET: hello
   POSTGRESS_DB: udagrampuggiandev
   POSTGRESS_HOST: udagrampuggiandev.cr2wnhkmaqti.us-east-2.rds.amazonaws.com
   URL: http://localhost:8100  
