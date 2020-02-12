@@ -49,9 +49,11 @@ Then try to access on `localhost:8100`. See more on the section _About the App_ 
 
 This project uses travis CI, to enable CI/CD. Here is an image of how looks like:
 
-![pr-ci](https://user-images.githubusercontent.com/45040629/74201666-211b9200-4c49-11ea-9a85-7176deb25cd6.png)
+![travis1](https://github.com/rpuggian/udacity-cd-course-3/blob/develop/prints/travis1.png)
 
-![cicd](https://user-images.githubusercontent.com/45040629/74201614-047f5a00-4c49-11ea-95e8-98de24afda2c.png)
+![travis2](https://github.com/rpuggian/udacity-cd-course-3/blob/develop/prints/travis2.png)
+
+![travis3](https://github.com/rpuggian/udacity-cd-course-3/blob/develop/prints/travis3.png)
 
 ## About the app
 
