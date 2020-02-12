@@ -8,7 +8,7 @@
       }
     ],
     "value": {
-      "endpoint": "udagram-api-lb-1054057829.us-east-2.elb.amazonaws.com"
+      "endpoint": "udagram3-api-lb-1200100634.us-east-2.elb.amazonaws.com"
     }
   },
   "kubeone_hosts": {
@@ -42,7 +42,7 @@
             ],
             "ssh_agent_socket": "string",
             "ssh_port": "number",
-            "ssh_private_key_file": "string",
+            "ssh_private_key_file": "/Users/rpuggian/.ssh/id_rsa",
             "ssh_user": "string"
           }
         ]
@@ -50,24 +50,24 @@
     ],
     "value": {
       "control_plane": {
-        "bastion": "18.222.113.171",
+        "bastion": "3.17.166.209",
         "bastion_port": 22,
         "bastion_user": "ubuntu",
         "cloud_provider": "aws",
-        "cluster_name": "udagram",
+        "cluster_name": "udagram3",
         "hostnames": [
-          "ip-172-31-210-243.us-east-2.compute.internal",
-          "ip-172-31-211-113.us-east-2.compute.internal",
-          "ip-172-31-212-228.us-east-2.compute.internal"
+          "ip-172-31-234-208.us-east-2.compute.internal",
+          "ip-172-31-235-232.us-east-2.compute.internal",
+          "ip-172-31-236-251.us-east-2.compute.internal"
         ],
         "private_address": [
-          "172.31.210.243",
-          "172.31.211.113",
-          "172.31.212.228"
+          "172.31.234.208",
+          "172.31.235.232",
+          "172.31.236.251"
         ],
         "ssh_agent_socket": "env:SSH_AUTH_SOCK",
         "ssh_port": 22,
-        "ssh_private_key_file": "",
+        "ssh_private_key_file": "/Users/rpuggian/.ssh/id_rsa",
         "ssh_user": "ubuntu"
       }
     }
@@ -77,7 +77,7 @@
     "type": [
       "object",
       {
-        "udagram-us-east-2a": [
+        "udagram3-us-east-2a": [
           "object",
           {
             "providerSpec": [
@@ -104,7 +104,7 @@
                     "tags": [
                       "object",
                       {
-                        "udagram-workers": "string"
+                        "udagram3-workers": "string"
                       }
                     ],
                     "vpcId": "string"
@@ -128,7 +128,7 @@
             "replicas": "number"
           }
         ],
-        "udagram-us-east-2b": [
+        "udagram3-us-east-2b": [
           "object",
           {
             "providerSpec": [
@@ -155,7 +155,7 @@
                     "tags": [
                       "object",
                       {
-                        "udagram-workers": "string"
+                        "udagram3-workers": "string"
                       }
                     ],
                     "vpcId": "string"
@@ -179,7 +179,7 @@
             "replicas": "number"
           }
         ],
-        "udagram-us-east-2c": [
+        "udagram3-us-east-2c": [
           "object",
           {
             "providerSpec": [
@@ -206,7 +206,7 @@
                     "tags": [
                       "object",
                       {
-                        "udagram-workers": "string"
+                        "udagram3-workers": "string"
                       }
                     ],
                     "vpcId": "string"
@@ -233,7 +233,7 @@
       }
     ],
     "value": {
-      "udagram-us-east-2a": {
+      "udagram3-us-east-2a": {
         "providerSpec": {
           "cloudProviderSpec": {
             "ami": "ami-0367b500fdcac0edc",
@@ -241,15 +241,15 @@
             "diskIops": 500,
             "diskSize": 50,
             "diskType": "gp2",
-            "instanceProfile": "udagram-host",
+            "instanceProfile": "udagram3-host",
             "instanceType": "t3.medium",
             "region": "us-east-2",
             "securityGroupIDs": [
-              "sg-082213cd656650bc0"
+              "sg-042c7259e4224a21e"
             ],
-            "subnetId": "subnet-074c3672b8a1943fb",
+            "subnetId": "subnet-0cba5ba82e862116a",
             "tags": {
-              "udagram-workers": ""
+              "udagram3-workers": ""
             },
             "vpcId": "vpc-20e9294b"
           },
@@ -263,7 +263,7 @@
         },
         "replicas": 1
       },
-      "udagram-us-east-2b": {
+      "udagram3-us-east-2b": {
         "providerSpec": {
           "cloudProviderSpec": {
             "ami": "ami-0367b500fdcac0edc",
@@ -271,15 +271,15 @@
             "diskIops": 500,
             "diskSize": 50,
             "diskType": "gp2",
-            "instanceProfile": "udagram-host",
+            "instanceProfile": "udagram3-host",
             "instanceType": "t3.medium",
             "region": "us-east-2",
             "securityGroupIDs": [
-              "sg-082213cd656650bc0"
+              "sg-042c7259e4224a21e"
             ],
-            "subnetId": "subnet-0d5a8fb6e9d5ffdc9",
+            "subnetId": "subnet-0606c4659a47c86eb",
             "tags": {
-              "udagram-workers": ""
+              "udagram3-workers": ""
             },
             "vpcId": "vpc-20e9294b"
           },
@@ -293,7 +293,7 @@
         },
         "replicas": 1
       },
-      "udagram-us-east-2c": {
+      "udagram3-us-east-2c": {
         "providerSpec": {
           "cloudProviderSpec": {
             "ami": "ami-0367b500fdcac0edc",
@@ -301,15 +301,15 @@
             "diskIops": 500,
             "diskSize": 50,
             "diskType": "gp2",
-            "instanceProfile": "udagram-host",
+            "instanceProfile": "udagram3-host",
             "instanceType": "t3.medium",
             "region": "us-east-2",
             "securityGroupIDs": [
-              "sg-082213cd656650bc0"
+              "sg-042c7259e4224a21e"
             ],
-            "subnetId": "subnet-0ef9588932410c1af",
+            "subnetId": "subnet-0f443e37d85145c7a",
             "tags": {
-              "udagram-workers": ""
+              "udagram3-workers": ""
             },
             "vpcId": "vpc-20e9294b"
           },
