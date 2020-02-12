@@ -36,7 +36,6 @@ Using minikube or on AWS, navigate to deployment/k8s folder and you should do th
 
 When everything is setted, u could run `kubectl get pods` for example, and u will see something like this:
 
-![getpods](https://user-images.githubusercontent.com/45040629/74201421-81f69a80-4c48-11ea-9457-67741c60b75f.png)
 
 ##### Okay, I have installed and setup the cluster, how to really use? 
 
